@@ -1,0 +1,58 @@
+import { BriefcaseMedical } from 'lucide-react';
+import { EXPERIENCE_TIMELINE } from '../data/surgeonData';
+
+export function ExperienceSection() {
+  return (
+    <section id="experience" className="bg-white py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-[#F8FAFC] text-[#102A43]">
+              <BriefcaseMedical className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <p className="mt-4 text-xs font-semibold tracking-[0.08em] text-[#1565C0]">
+              Clinical Leadership
+            </p>
+            <h2 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-[#102A43] [text-wrap:balance]">
+              Hospital &amp; Academic Appointments
+            </h2>
+            <p className="mt-4 text-[15px] leading-[1.7] text-slate-600">
+              Over 18 years as an accredited NHS and private Consultant Surgeon,
+              combining high-volume elective joint replacement with tertiary major
+              trauma care.
+            </p>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-[#F8FAFC]/60">
+              {EXPERIENCE_TIMELINE.map((item) => (
+                <article
+                  key={`${item.period}-${item.role}`}
+                  className="grid grid-cols-1 gap-3 p-6 transition-colors hover:bg-white sm:grid-cols-12 sm:gap-6 sm:p-7"
+                >
+                  <div className="sm:col-span-3">
+                    <p className="font-heading text-sm font-semibold text-[#102A43] tabular-nums">
+                      {item.period}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">{item.location}</p>
+                  </div>
+                  <div className="sm:col-span-9">
+                    <h3 className="font-heading text-base font-semibold leading-snug text-[#102A43] sm:text-[17px]">
+                      {item.role}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-[#1565C0]">
+                      {item.organisation}
+                    </p>
+                    <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+                      {item.summary}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
